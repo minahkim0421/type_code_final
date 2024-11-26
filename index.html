@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Video Archive</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- The left expandable section -->
+    <div id="section-a" class="section">
+
+        <button class="section-a-span-button" onclick="expandSection('section-a')"><img
+                src="assets/arrow-button-right.svg"></button>
+        <div class="section-content">
+            <div id="section-a-grid" class="section-a-grid">
+                <!-- whiplash/aespa -->
+                <div class="section-a-grid-child">
+                    <div class="section-a-grid-child-box image-box"
+                        onclick="loadHTML('section-b', '/whiplash-aespa-mv/index.html')">
+                        <img src="assets/thumbnails/Screenshot 2024-11-19 at 4.13.18 PM.png">
+                    </div>
+                    <div class="section-a-grid-child-textbox">
+                        <p class="textbox-item-1 gap-sans">WHIPLASH <span class="jgs"><br> AESPA</span></p>
+                        <p class="textbox-item-2 jgs">
+                            CAMERA PAN ☒ HANDHELD ☒ <br>
+                            MOBILE PHONE ☒ FAST CUTS ☒
+                        </p>
+                    </div>
+                </div>
+                <!-- wish/nctwish -->
+                <div class="section-a-grid-child">
+                    <div class="section-a-grid-child-box image-box" onclick="loadHTML('section-b', '/wish-nctwish-mv/index.html')">
+                        <img src="assets/thumbnails/wishthumb.png">
+                    </div>
+                    <div class="section-a-grid-child-textbox">
+                        <p class="textbox-item-1 gap-sans">WISH <span class="jgs"><br>NCT WISH</span></p>
+                        <p class="textbox-item-2 jgs">
+                            CAMERA PAN ☒ HANDHELD ☒ <br>
+                            MOBILE PHONE ☒ FAST CUTS ☒
+                        </p>
+                    </div>
+                </div>
+                <!-- loop/yves -->
+                <div class="section-a-grid-child">
+                    <div class="section-a-grid-child-box image-box" onclick="loadHTML('section-b', '/loop-yves-mv/index.html')">
+                        <img src="assets/thumbnails/loopthumb.png">
+                    </div>
+                    <div class="section-a-grid-child-textbox">
+                        <p class="textbox-item-1 gap-sans">LOOP <span class="jgs"><br>YVES</span></p>
+                        <p class="textbox-item-2 jgs">
+                            CAMERA PAN ☒ HANDHELD ☒ <br>
+                            MOBILE PHONE ☒ FAST CUTS ☒
+                        </p>
+                    </div>
+                </div>
+                <!-- warcry/andteam -->
+                <div class="section-a-grid-child">
+                    <div class="section-a-grid-child-box image-box" onclick="loadHTML('section-b', '/warcry-andteam-mv/index.html')">
+                        <img src="assets/thumbnails/warcrythumb.png">
+                    </div>
+                    <div class="section-a-grid-child-textbox">
+                        <p class="textbox-item-1 gap-sans">WAR CRY <span class="jgs"><br>&TEAM</span></p>
+                        <p class="textbox-item-2 jgs">
+                            CAMERA PAN ☒ HANDHELD ☒ <br>
+                            MOBILE PHONE ☒ FAST CUTS ☒
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- The right expandable section -->
+    <div id="section-b" class="section">
+
+        <button class="section-b-span-button" onclick="expandSection('section-b')"><img
+                src="assets/arrow-button-left.svg"></button>
+        <div class="section-content">
+            <div id="section-b-v1" class="section-b-version">
+                <div class="section-b-v1-grid">
+                    <p class="jgs" style="color: #78A6FF">*Welcome to the Music Video Archive ^m^*</p>
+                    <br>
+                    <p></p>
+                    <p class="ibm-plex-sans-kr-regular">(1) Click on any music video to see more details!</p>
+                    <p class="ibm-plex-sans-kr-regular">(2) If you would like to archive the music video you just saw, click on the plus
+                        button on the middle.</p>
+                    <p class="ibm-plex-sans-kr-regular">(3) Click on the arrow buttons below to fully span either sides.</p>
+                    <p class="ibm-plex-sans-kr-regular">(4) Click on the yellow button on the top of the middle column to access menu.
+                    </p>
+                    <p class="ibm-plex-sans-kr-regular">Additional Info...</p>
+                </div>
+            </div>
+            <div id="section-b"></div>
+        </div>
+    </div>
+
+    <div class="center-nav-bar">
+        <button class="nav-bar-button-1" onclick="toggleMenu()"><img src="assets/menu-button.svg"></button>
+        <div id="collapsible-menu" class="menu">
+            <a class="ibm-plex-sans-kr-regular" href="#option1">ABOUT</a>
+            <a class="ibm-plex-sans-kr-regular" href="#option2">MY ARCHIVE</a>
+            <a class="ibm-plex-sans-kr-regular" href="#option3">CONTACT</a>
+        </div>
+        <button class="nav-bar-button-2 gap-sans second-menu">MUSIC+VIDEO</button>
+        <button class="nav-bar-button-1"><img src="assets/add-button.svg"></button>
+        <button class="nav-bar-button-2 gap-sans">ARCHIVE</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
