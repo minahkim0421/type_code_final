@@ -51,7 +51,8 @@ function resetGridBackgroundColors() {
     const gridParent = document.querySelector('#section-a-grid');
     gridChildren.forEach(child => {
         child.style.backgroundColor = '';
-        child.style.height = ''; // Resets to default
+        child.style.height = ''; 
+        child.style.color = ''; // Resets to default
     });
     gridParent.style.backgroundColor = '';
 }
