@@ -17,10 +17,14 @@
         <div class="section-content">
             <div id="section-a-grid" class="section-a-grid">
                 <!-- whiplash/aespa -->
-                <div class="section-a-grid-child">
-                    <div class="section-a-grid-child-box image-box"
-                        onclick="loadHTML('section-b', 'whiplash-aespa-mv/index.html')">
-                        <img src="assets/thumbnails/Screenshot 2024-11-19 at 4.13.18 PM.png">
+                <div class="section-a-grid-child" onclick="playPreview('whiplash', 'assets/prev/whiplash-aespa-prev.mp4')">
+                    <div id="whiplash" class="section-a-grid-child-box image-box"
+                        onclick="
+                        loadHTML('section-b', 'whiplash-aespa-mv/index.html')">
+                        <!-- <img src="assets/thumbnails/Screenshot 2024-11-19 at 4.13.18 PM.png"> -->
+                        <video width="100%" height="100%" controls>
+                            <source src="assets/prev/whiplash-aespa-prev.mp4" type="video/mp4">
+                          </video>
                     </div>
                     <div class="section-a-grid-child-textbox">
                         <p class="textbox-item-1 gap-sans">WHIPLASH <span class="jgs"><br> AESPA</span></p>
@@ -32,8 +36,12 @@
                 </div>
                 <!-- wish/nctwish -->
                 <div class="section-a-grid-child">
-                    <div class="section-a-grid-child-box image-box" onclick="loadHTML('section-b', 'wish-nctwish-mv/index.html')">
-                        <img src="assets/thumbnails/wishthumb.png">
+                    <div class="section-a-grid-child-box image-box"
+                        onclick="loadHTML('section-b', 'wish-nctwish-mv/index.html')">
+                        <!-- <img src="assets/thumbnails/wishthumb.png"> -->
+                        <video width="100%" height="100%" controls>
+                            <source src="assets/prev/wish-nctwish-prev.mp4" type="video/mp4">
+                          </video>
                     </div>
                     <div class="section-a-grid-child-textbox">
                         <p class="textbox-item-1 gap-sans">WISH <span class="jgs"><br>NCT WISH</span></p>
@@ -45,7 +53,8 @@
                 </div>
                 <!-- loop/yves -->
                 <div class="section-a-grid-child">
-                    <div class="section-a-grid-child-box image-box" onclick="loadHTML('section-b', 'loop-yves-mv/index.html')">
+                    <div class="section-a-grid-child-box image-box"
+                        onclick="loadHTML('section-b', 'loop-yves-mv/index.html')">
                         <img src="assets/thumbnails/loopthumb.png">
                     </div>
                     <div class="section-a-grid-child-textbox">
@@ -58,7 +67,8 @@
                 </div>
                 <!-- warcry/andteam -->
                 <div class="section-a-grid-child">
-                    <div class="section-a-grid-child-box image-box" onclick="loadHTML('section-b', 'warcry-andteam-mv/index.html')">
+                    <div class="section-a-grid-child-box image-box"
+                        onclick="loadHTML('section-b', 'warcry-andteam-mv/index.html')">
                         <img src="assets/thumbnails/warcrythumb.png">
                     </div>
                     <div class="section-a-grid-child-textbox">
@@ -85,10 +95,13 @@
                     <br>
                     <p></p>
                     <p class="ibm-plex-sans-kr-regular">(1) Click on any music video to see more details!</p>
-                    <p class="ibm-plex-sans-kr-regular">(2) If you would like to archive the music video you just saw, click on the plus
+                    <p class="ibm-plex-sans-kr-regular">(2) If you would like to archive the music video you just saw,
+                        click on the plus
                         button on the middle.</p>
-                    <p class="ibm-plex-sans-kr-regular">(3) Click on the arrow buttons below to fully span either sides.</p>
-                    <p class="ibm-plex-sans-kr-regular">(4) Click on the yellow button on the top of the middle column to access menu.
+                    <p class="ibm-plex-sans-kr-regular">(3) Click on the arrow buttons below to fully span either sides.
+                    </p>
+                    <p class="ibm-plex-sans-kr-regular">(4) Click on the yellow button on the top of the middle column
+                        to access menu.
                     </p>
                     <p class="ibm-plex-sans-kr-regular">Additional Info...</p>
                 </div>
@@ -99,13 +112,15 @@
 
     <div class="center-nav-bar">
         <button class="nav-bar-button-1" onclick="toggleMenu()"><img src="assets/menu-button.svg"></button>
-        <div id="collapsible-menu" class="menu">
+        <!-- <div id="collapsible-menu" class="menu">
             <a class="ibm-plex-sans-kr-regular" href="#option1">ABOUT</a>
             <a class="ibm-plex-sans-kr-regular" href="#option2">MY ARCHIVE</a>
             <a class="ibm-plex-sans-kr-regular" href="#option3">CONTACT</a>
-        </div>
-        <button class="nav-bar-button-2 gap-sans second-menu">MUSIC+VIDEO</button>
-        <button class="nav-bar-button-1"><img src="assets/add-button.svg"></button>
+        </div> -->
+        <button class="nav-bar-button-2 gap-sans second-menu">
+            <a href="index.html">MUSIC+VIDEO</a>
+        </button>
+        <button class="nav-bar-button-1" onclick="popupMessage()"><img src="assets/add-button.svg"></button>
         <button class="nav-bar-button-2 gap-sans">ARCHIVE</button>
     </div>
 

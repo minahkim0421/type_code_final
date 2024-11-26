@@ -37,24 +37,49 @@ function expandSection(sectionId) {
 function setGridBackgroundColorToBlack() {
     const gridChildren = document.querySelectorAll('#section-a .section-a-grid-child');
     const gridParent = document.querySelector('#section-a-grid');
+    const gridBottomBar = document.querySelectorAll('.section-a-grid-child-textbox');
+    const gridTextBox = document.querySelectorAll('.textbox-item-1 .textbox-item-2');
+    
     gridChildren.forEach(child => {
         child.style.backgroundColor = 'black';
         child.style.height = '100vh';
-        child.style.color = '#F5F5F5';
+        child.style.padding = '0';
+        // child.style.color = '#F5F5F5';
+    });
+    gridBottomBar.forEach(bar => {
+        bar.style.backgroundColor = 'gray';
+        bar.style.height = '20vh';
+        bar.style.padding = '10px';
+    });
+    gridTextBox.forEach(box => {
+        box.style.fontSize = '16px';
     });
     gridParent.style.backgroundColor = 'black';
+    // gridTextBox.style.fontSize = '16px';
 }
 
 // Helper function to reset the background color of section-a grid children
 function resetGridBackgroundColors() {
     const gridChildren = document.querySelectorAll('#section-a .section-a-grid-child');
     const gridParent = document.querySelector('#section-a-grid');
+    const gridBottomBar = document.querySelectorAll('.section-a-grid-child-textbox');
+    const gridTextBox = document.querySelectorAll('.textbox-item-1 .textbox-item-2');
+
     gridChildren.forEach(child => {
         child.style.backgroundColor = '';
         child.style.height = ''; 
-        child.style.color = ''; // Resets to default
+        child.style.padding = ''; // Resets to default
+    });
+    gridBottomBar.forEach(bar => {
+        bar.style.backgroundColor='';
+        bar.style.height = '';
+        bar.style.padding = '';
+    });
+    gridTextBox.forEach(box => {
+        box.style.fontSize = ''
     });
     gridParent.style.backgroundColor = '';
+    // gridTextBox.style.fontSize = '';
 }
 
 function updateCenterNavBarPosition() {
@@ -102,6 +127,77 @@ function toggleMenu() {
     menu.classList.toggle('expanded');
 }
 
+function popupMessage() {
+    alert('Archived!');
+}
+
+function playPreview(sectionId, previewFilePath) {
+    const section = document.getElementById(sectionId);
+    const sectionA = document.getElementById('section-a');
+
+    // Ensure we're working with section-a and it's expanded
+    const sectionWidth = window.getComputedStyle(sectionA).width;
+
+    if (sectionId === 'section-a' && sectionWidth === '90%') {
+        // Section-a is expanded
+        const gridChildren = section.querySelectorAll('.section-a-grid-child');
+
+        if (gridChildren.length > 0) {
+            const firstGridChild = gridChildren[0]; // Get the first grid child
+            const imageBox = firstGridChild.querySelector('.image-box');
+
+            if (imageBox) {
+                const image = imageBox.querySelector('img');
+                if (image) {
+                    // Create a video element
+                    const video = document.createElement('video');
+                    video.src = previewFilePath;
+                    video.controls = true; // Enable video controls
+                    video.autoplay = true; // Autoplay video
+                    video.loop = true; // Loop video
+                    video.style.width = '100%'; // Match image dimensions
+                    video.style.height = '100%';
+
+                    // Replace the image with the video
+                    imageBox.innerHTML = ''; // Clear the image content
+                    imageBox.appendChild(video);
+                }
+            }
+        } else {
+            console.warn("No grid children found in section-a.");
+        }
+    } else {
+        // Section is not expanded; stop the video and restore the original image
+        const gridChildren = section.querySelectorAll('.section-a-grid-child');
+        if (gridChildren.length > 0) {
+            const firstGridChild = gridChildren[0];
+            const imageBox = firstGridChild.querySelector('.image-box');
+
+            if (imageBox) {
+                const video = imageBox.querySelector('video');
+                if (video) {
+                    // Stop the video and replace it with the original image
+                    video.pause(); // Stop video playback
+                    const image = document.createElement('img');
+                    image.src = 'example.jpg'; // Replace with the original image source
+                    image.alt = 'Music Video Thumbnail';
+                    image.style.width = '100%';
+                    image.style.height = '100%';
+
+                    // Replace the video with the image
+                    imageBox.innerHTML = '';
+                    imageBox.appendChild(image);
+                }
+            }
+        }
+    }
+}
+
+
+
+// document.getElementById('section-a').onclick = function () {
+//     playPreview('whiplash', 'assets/prev/whiplash-aespa-prev.mp4');
+// };
 
   // Example interaction to toggle Section B versions
 //   document.querySelectorAll('.section-a-grid-child').forEach(child => {
