@@ -124,7 +124,12 @@ function updateCenterNavBarPosition() {
 
 function toggleMenu() {
     const menu = document.getElementById('collapsible-menu');
-    menu.classList.toggle('expanded');
+    menu.classList.toggle('center-nav-bar-hidden');
+}
+
+function toggleMenu2() {
+    const menu = document.getElementById('my-archive');
+    menu.classList.toggle('my-archive-active');
 }
 
 function popupMessage() {
@@ -193,7 +198,120 @@ function playPreview(sectionId, previewFilePath) {
     }
 }
 
+//adding and removing class in the contents
 
+document.querySelectorAll('.section-b-v2-container-textbox-menu button').forEach(button => {
+    button.addEventListener('click', () => {
+        const targetId = button.dataset.target;
+
+        // Remove active class from all buttons and content
+        document.querySelectorAll('.section-b-v2-container-textbox-menu button').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.section-b-v2-container-textbox-contents').forEach(content => content.classList.remove('active'));
+
+        // Add active class to the selected button and content
+        button.classList.add('active');
+        document.getElementById(targetId).classList.add('active');
+    });
+});
+
+//getting user cookie and archiving the music video list
+
+let selectedVideoId = null; // Store the currently selected video ID
+
+// Add event listeners to all music video sections
+document.querySelectorAll('.section-a-grid-child-box').forEach(video => {
+    video.addEventListener('click', () => {
+        selectedVideoId = video.id; // Store the ID of the clicked section
+        alert(`You have selected: ${selectedVideoId}`);
+    });
+});
+
+// Function to get cookies as an object
+function getCookies() {
+    return document.cookie.split('; ').reduce((cookies, item) => {
+        const [key, value] = item.split('=');
+        cookies[key] = value ? decodeURIComponent(value) : '';
+        return cookies;
+    }, {});
+}
+
+// Function to set a cookie
+function setCookie(name, value, days = 7) {
+    const date = new Date();
+    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+    document.cookie = `${name}=${encodeURIComponent(value)}; expires=${date.toUTCString()}; path=/`;
+}
+
+// Function to save the selected video
+function saveVideo() {
+    if (!selectedVideoId) {
+        alert('Please select a music video first.');
+        return;
+    }
+
+    // Save the video ID to cookies
+    const cookies = getCookies();
+    const savedVideos = cookies.savedVideos ? JSON.parse(cookies.savedVideos) : [];
+    if (!savedVideos.includes(selectedVideoId)) {
+        savedVideos.push(selectedVideoId);
+        setCookie('savedVideos', JSON.stringify(savedVideos));
+    }
+
+    // Update the My Archive list
+    updateArchiveList(savedVideos);
+
+    alert(`Saved: ${selectedVideoId}`);
+}
+
+// Function to update the My Archive list
+function updateArchiveList(videos) {
+    const archiveList = document.getElementById('archive-list');
+    archiveList.innerHTML = ''; // Clear current list
+
+    videos.forEach(videoId => {
+        const listItem = document.createElement('li');
+        const link = document.createElement('a');
+        link.href = `#${videoId}`; // Create an anchor link to the video
+        link.textContent = videoId; // Display the video ID
+        listItem.appendChild(link);
+        archiveList.appendChild(listItem);
+    });
+}
+
+// Load saved videos on page load
+window.onload = () => {
+    const cookies = getCookies();
+    const savedVideos = cookies.savedVideos ? JSON.parse(cookies.savedVideos) : [];
+    updateArchiveList(savedVideos);
+};
+
+// Attach event listener to the Save button
+document.getElementById('save-button').addEventListener('click', saveVideo);
+
+
+// document.querySelector('.section-b-v2-container-textbox-menu').addEventListener('click', (event) => {
+//     if (event.target.tagName === 'BUTTON') {
+//       // Remove 'active' class from all buttons
+//       document.querySelectorAll('.section-b-v2-container-textbox-menu button').forEach(button => {
+//         button.classList.remove('active');
+//       });
+  
+//       // Add 'active' class to the clicked button
+//       event.target.classList.add('active');
+  
+//       // Remove 'active' class from all content items
+//       document.querySelectorAll('.section-b-v2-container-textbox-contents').forEach(content => {
+//         content.classList.remove('active');
+//       });
+  
+//       // Add 'active' class to the targeted content
+//       const targetId = event.target.getAttribute('data-target');
+//       document.getElementById(targetId).classList.add('active');
+//     }
+//   });
+  
+  
+  
 
 // document.getElementById('section-a').onclick = function () {
 //     playPreview('whiplash', 'assets/prev/whiplash-aespa-prev.mp4');
