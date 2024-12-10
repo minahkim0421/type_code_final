@@ -97,6 +97,8 @@ a {
 }
 
 .section-a-grid {
+  scroll-snap-type: mandatory;
+  scroll-snap-align: center;
   height: 100%;
   /* padding-bottom: 80px; */
   border-right: 2px dashed black;
@@ -107,6 +109,7 @@ a {
 }
 
 .section-a-grid-child {
+  /* scroll-snap-type: mandatory; */
   padding-left: 100px;
   padding-right: 100px;
   padding-top: 50px;
@@ -353,20 +356,22 @@ button {
 @media only screen and (max-width: 1400px) {
   .textbox-item-1 {
     padding-top: 20px;
-    font-size: 16px;
+    font-size: 20px;
     font-family: 'IBM Plex Sans KR', sans-serif;
   }
   .textbox-item-1 span {
-    font-size: 16px;
+    font-size: 20px;
     font-family: 'IBM Plex Sans KR', sans-serif;
   }
   .textbox-item-2 {
     padding-top: 15px;
     font-size: 16px;
+    font-family: 'IBM Plex Sans KR', sans-serif;
   }
   .section-a-grid-child {
-    padding-top: 20px;
+    padding-top: 16px;
     height: 40vh;
+    font-family: 'IBM Plex Sans KR', sans-serif;
   }
 }
 

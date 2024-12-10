@@ -43,7 +43,8 @@ function setGridBackgroundColorToBlack() {
     gridChildren.forEach(child => {
         child.style.backgroundColor = 'black';
         child.style.height = '100vh';
-        child.style.padding = '0';
+        child.style.padding = '0%';
+        child.style.paddingBottom = '20px';
         // child.style.color = '#F5F5F5';
     });
     gridBottomBar.forEach(bar => {
